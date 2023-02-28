@@ -16,7 +16,9 @@ MonoBehaviour:
   templateName: 
   description: 
   preview: {fileID: 0}
-  dependencies: []
+  dependencies:
+  - dependency: {fileID: 1070847076011563057, guid: 689f7a03d18c41f438861f629d0d5b6c, type: 3}
+    instantiationMode: 0
   templatePipeline: {fileID: 0}
   badge: {fileID: 0}
   addToDefaults: 0

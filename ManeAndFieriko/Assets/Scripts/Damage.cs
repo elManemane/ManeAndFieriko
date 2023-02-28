@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Damage : MonoBehaviour
 {
-    public int PhysicalDamage, FireDamage, IceDamge, ShockDamage;
+    public int PhysicalDamage, FireDamage, IceDamge, ShockDamage,HolyDamage,PoisonDamage,DeathyDamage;
 }

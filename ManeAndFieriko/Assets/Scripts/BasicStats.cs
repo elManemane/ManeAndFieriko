@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class BasicStats : MonoBehaviour
 {
-    public int hp, Speed,MeleeDamage;
+    public int hp,MeleeDamage;
+    public float Speed;
 }

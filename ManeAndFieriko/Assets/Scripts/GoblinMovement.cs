@@ -19,6 +19,11 @@ public class GoblinMovement : BasicStats
         if(target.tag == "Player")
         {
             Anim.SetBool("isRunning", true);
+            float dis = Vector3.Distance(transform.position, target.position);
+            if (dis <= 3)
+            {
+                Anim.SetBool("isJumping", true);
+            }
         }
         else
         {

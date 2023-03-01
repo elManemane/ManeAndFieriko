@@ -9,6 +9,7 @@ public class GoblinMovement : BasicStats
     public NavMeshAgent Nav;
     public Animator Anim;
 
+
     private void Start()
     {
             Nav.speed = Speed;

@@ -5,24 +5,30 @@ using UnityEngine;
 public class PlayerMovement : BasicStats
 {
     private CharacterController CharCont;
-    private Camera mycam;
+    public Transform cam;
     private Vector3 PlayerVelocity;
+    public float turnSmoothTime = 0.1f;
+    float turnSmoothVelocity;
 
     private void Start()
     {
-
-        mycam = Camera.main;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         CharCont = gameObject.GetComponent<CharacterController>();
     }
     void Update()
     {
 
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        CharCont.Move(move * Time.deltaTime * Speed);
+        Vector3 move = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
 
-        if (move != Vector3.zero)
+        if(move.magnitude >= 1)
         {
-          //  gameObject.transform.forward = move;
+            float targetAngle = Mathf.Atan2(move.x, move.z)* Mathf.Rad2Deg + cam.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+            Vector3 MoveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            CharCont.Move(MoveDir.normalized * Speed * Time.deltaTime);
         }
 
         PlayerVelocity.y += -9.81f * Time.deltaTime;
@@ -31,11 +37,5 @@ public class PlayerMovement : BasicStats
         {
             this.enabled = false;
         }
-        CamLook();
-    }
-
-    void CamLook()
-    {
-
     }
 }

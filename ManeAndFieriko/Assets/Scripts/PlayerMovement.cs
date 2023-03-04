@@ -9,12 +9,18 @@ public class PlayerMovement : BasicStats
     private Vector3 PlayerVelocity;
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
+    private Inventory inventory;
+
+    [SerializeField] private UIInventory uiInventory;
 
     private void Start()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         CharCont = gameObject.GetComponent<CharacterController>();
+
+        inventory = new Inventory();
+        uiInventory.SetInventory(inventory);
     }
     void Update()
     {

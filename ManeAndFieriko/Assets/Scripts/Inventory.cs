@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Inventory
 {
+    public event EventHandler OnItemListChanged;
     private List<Item> itemList;
 
     public Inventory()
@@ -12,12 +14,13 @@ public class Inventory
 
         AddItem(new Item { itemType = Item.ItemType.Weapon, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.Coin, amount = 1 });
-        Debug.Log(itemList.Count);
+       // Debug.Log(itemList.Count);
     }
 
     public void AddItem(Item item)
     {
         itemList.Add(item);
+        OnItemListChanged?.Invoke(this, EventArgs.Empty);
     }
 
     public List<Item> GetItemList()

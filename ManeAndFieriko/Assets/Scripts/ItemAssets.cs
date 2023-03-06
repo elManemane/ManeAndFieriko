@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryItemIcons : MonoBehaviour
+public class ItemAsstes : MonoBehaviour
 {
-    public static InventoryItemIcons Instance { get; private set; }
+    public static ItemAsstes Instance { get; private set; }
 
     private void Awake()
     {
         Instance = this;
     }
 
+    public Transform pfItemWorld;
     public Sprite swordSprite, coinSprite;
 }

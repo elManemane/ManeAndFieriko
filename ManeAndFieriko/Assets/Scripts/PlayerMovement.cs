@@ -22,6 +22,7 @@ public class PlayerMovement : BasicStats
         inventory = new Inventory();
         uiInventory.SetInventory(inventory);
     }
+
     void Update()
     {
 
